@@ -1,7 +1,7 @@
 {
   "name": "ex08",
   "version": "1.0.0",
-  "description": "ex08: CRA로 만든 Application을 직접 설정해서 만들어 보기",
+  "description": "ex08: JSX Tutorials",
   "main": "index.js",
   "scripts": {
     "debug": "npx webpack serve --progress --mode development --env",
