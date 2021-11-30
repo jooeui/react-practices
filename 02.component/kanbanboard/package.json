@@ -1,7 +1,7 @@
 {
-  "name": "ex01",
+  "name": "kanbanboard",
   "version": "1.0.0",
-  "description": "ex01: Property",
+  "description": "kanbanboard",
   "main": "index.js",
   "scripts": {
     "debug": "npx webpack serve --progress --mode development --env"

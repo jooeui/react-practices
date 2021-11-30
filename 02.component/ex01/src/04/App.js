@@ -11,6 +11,9 @@ export default function() {
                 props04={ {no:1} }
                 props05={ [1, 2, 3, 4] }
                 props06={ () => '함수' }
+                props07={ '200' }
+                props08={ [false, true, true] }
+                props09={ {no:1, name:'피카츄', email:'pikachu@gmail.com'} }
             />
         </div>
     )

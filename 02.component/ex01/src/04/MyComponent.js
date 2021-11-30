@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import {PropTypes} from 'prop-types';
 
-export default function MyComponent({props01, props02, props03, props04, props05, props06}) {
+export default function MyComponent({props01, props02, props03, props04, props05, props06, props07, props08, props09}) {
     return (
         <Fragment>
             <h2>Property Validation</h2>
@@ -23,6 +23,25 @@ export default function MyComponent({props01, props02, props03, props04, props05
 
             <span>props06: {props06 ? props06() : '--- Not Set ---'}</span>
             <br />
+
+            <span>props07: {props07 ? props07 : '--- Not Set ---'}</span>
+            <br />
+
+            <span>props08: {props08 ? props08.map((e, i) => e ? <b key={i}>{'true'}</b> : <b key={i}>{'false'}</b>) : '--- Not Set ---'}</span>
+            <br />
+
+            <span>
+                props09: {
+                    props09 ?
+                        <div>
+                            <h3>{props09.no}</h3>
+                            <h3>{props09.name}</h3>
+                            <h3>{props09.email}</h3>
+                        </div> : 
+                        '--- Not Set ---'
+                }
+            </span>
+            <br />
         </Fragment>
     )
 }
@@ -34,7 +53,16 @@ MyComponent.propTypes = {
     props03: PropTypes.bool.isRequired,
     props04: PropTypes.object.isRequired,
     props05: PropTypes.array.isRequired,
-    props06: PropTypes.func.isRequired
+    props06: PropTypes.func.isRequired,
+
+    // Built-In PropTypesValidator(Combined Primitive)
+    props07: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    props08: PropTypes.arrayOf(PropTypes.bool).isRequired,
+    props09: PropTypes.shape({
+        no: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired
+    }).isRequired
 }
 
 // default value
