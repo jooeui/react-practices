@@ -3,11 +3,11 @@ React Practices - Component
 ex01: Property
 1. Component 작성법
 2. data flow: top -> down
-3. Kanaboard - ex01
+3. Kanaboard - 01
 
 ex02
 1. Component Styling
-2. Kanaboard - ex02
+2. Kanaboard - 02
 
 ex03
 1. React Event
