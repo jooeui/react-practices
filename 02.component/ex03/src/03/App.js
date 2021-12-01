@@ -18,8 +18,8 @@ export default function App() {
                 Native Dom Event 객체를 Wrapper 하고 있다.<br/>
                 Native 이벤트 객체와 사용하는 방식이 같다(인터페이스 동일)
             </p>
-            <form name='addForm' method='post' action='/do/not/go'>
-                <input type='text' name='message' placeholder='메시지를 입력하세요'/>
+            <form name='addForm' method='post' action='/do/not/go' onSubmit={onAddFormSubmit}>
+                <input type='text' name='message' placeholder='메시지를 입력하세요' onChange={onChangeMessageInput}/>
                 <br/>
                 <br/>
                 <input type='submit' value='등록' />

@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function TitleBar02() {
-    const onClickHandler = () => {
+    const onClickHandler = (e) => {
         console.log('TitleBar02 clicked');
     }
 
