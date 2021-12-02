@@ -3,11 +3,13 @@ import Email from './Email';
 
 import styles from './assets/scss/Emaillist.scss';
 
-const Emaillist = ({emails}) => {
+const Emaillist = ({keyword, emails}) => {
     return (
         <ul className={styles.Emaillist}>
             {
-                emails.map((email) => <Email 
+                emails
+                    .filter( email => email.firstName.indexOf(keyword) !== -1 || email.lastName.indexOf(keyword) !== -1 || email.email.indexOf(keyword) !== -1)
+                    .map( email => <Email 
                                             key={email.no}
                                             firstName={email.firstName} 
                                             lastName={email.lastName} 

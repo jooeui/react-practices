@@ -10,7 +10,6 @@ export default function() {
     const [keyword, setKeyword] = useState('');
     
     const notifyKeyWordChange = (keyword) => {
-        console.log(keyword);
         setKeyword(keyword);
     }
 
