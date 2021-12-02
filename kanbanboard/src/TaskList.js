@@ -9,6 +9,7 @@ export default function({tasks}) {
                                         key={task.no} 
                                         name={task.name} />)}
             </ul>
+            <input type='text' className={styles.TaskList__add} placeholder='Task 추가'/>
         </div>
     )
 }
