@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useRef} from 'react';
-import PropTypes, { objectOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import Message from './Message';
 import styles from './assets/scss/MessageList.scss';
@@ -7,7 +7,7 @@ import modalStyles from "./assets/scss/modal.scss";
 
 Modal.setAppElement('body');
 
-export default function MessageList({messages}) {
+export default function MessageList({messages, notifyMessage}) {
     const refForm = useRef(null);   // focus를 Real Dom에서 하기 위해 useRef 사용
     // dialog를 띄우는데 너무 많은 데이터들이 필요함 - 지금은 password만 하는데도 너무 많은데 여러 input이 생기면 더 복잡할 수도!!
     // const [isOpen, setIsOpen] = useState(false);
@@ -43,12 +43,12 @@ export default function MessageList({messages}) {
 
             // 비밀번호가 틀린 경우
             // jsonResult.data = null;
-            setModalData({}, Object.assign(modalData), {title: '...', password: ''});
+            // setModalData({}, Object.assign(modalData), {label: '비밀번호가 일치하지 않습니다.', password: ''});
 
-            // 잘 삭제가 된 경우
+            // 삭제가 잘 된 경우
             // jsonResult.data = 10;
-            console.log("삭제!:", modalData);
-
+            setModalData({isOpen: false, password: ''});
+            notifyMessage.delete(modalData.messageNo);
         } catch (err) {
             console.log(err);
         }
@@ -61,12 +61,13 @@ export default function MessageList({messages}) {
         
         // 위 세개를 modalData로 묶음!!!!!!!!
         setModalData({
-            title: '작성 시 입력했던 비밀번호를 입력하세요.',
+            label: '작성 시 입력했던 비밀번호를 입력하세요.',
             isOpen: true,
             messageNo: no,
             password: ''    // 모달을 띄울 때 password input reset
         })
     } 
+
     return (
         <Fragment>
             <ul className={styles.MessageList}>
@@ -85,7 +86,7 @@ export default function MessageList({messages}) {
                 className={modalStyles.Modal}
                 overlayClassName={modalStyles.Overlay}
                 style={{content: {width: 350}}}>
-                <h1>비밀번호입력</h1>
+                <h1>비밀번호 입력</h1>
                 <div>
                     {/* 
                         제어 컴포넌트 사용 - form 없이 input만 써도 됨 / useState, input value, onChange 사용해야함 
@@ -95,14 +96,14 @@ export default function MessageList({messages}) {
                         ref={refForm}
                         className={styles.DeleteForm}
                         onSubmit={handleSubmit}>
-                        <label>{modalData.title}</label>
+                        <label>{modalData.label || ''}</label>
                         <input
                             type={'password'}
                             autoComplete={'off'}
                             name={'password'}
                             value={modalData.password}
                             placeholder={'비밀번호'}
-                            onChange={ (e) => setModalData(Object.assign(Object.assign({}, modalData, {password: e.target.value}))) }/>
+                            onChange={ (e) => {setModalData(Object.assign({}, modalData, {password: e.target.value}))} }/>
                     </form>
                 </div>
                 <div className={modalStyles['modal-dialog-buttons']}>
