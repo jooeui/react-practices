@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useRef} from 'react';
+import React, {Fragment, useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import Message from './Message';
@@ -15,6 +15,11 @@ export default function MessageList({messages, notifyMessage}) {
     // const [messageNo, setMessageNo] = useState(0);  // 모달을 띄우고(notifyDeleteMessage) no는 사라지기 때문에 상태를 저장 해줘야함!
 
     const [modalData, setModalData] = useState({isOpen: false})
+    useEffect( () => {
+        setTimeout( () => {
+            refForm.current && refForm.current.password.focus();
+        }, 200);
+    }, [modalData]);
 
     // submit이 되지 않아용
     const handleSubmit = (e) => {
