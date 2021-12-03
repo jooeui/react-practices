@@ -8,16 +8,28 @@ import modalStyles from "./assets/scss/modal.scss";
 Modal.setAppElement('body');
 
 export default function MessageList({messages}) {
-    const refForm = useRef(null);
+    const refForm = useRef(null);   // focus를 Real Dom에서 하기 위해 useRef 사용
     const [isOpen, setIsOpen] = useState(false);
 
+    // submit이 되지 않아용
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        console.log("삭제된당");
+    }
+
+    const notifyDeleteMessage = (no) => {
+        console.log('Delete!: ' + no);
+        setIsOpen(true);    // modal 띄운다!!!!!
+    } 
     return (
         <Fragment>
             <ul className={styles.MessageList}>
                 {messages.map(message => <Message key={`guestbook_message_${message.no}`}
                                                   no={message.no}
                                                   name={message.name}
-                                                  message={message.message} />)}
+                                                  message={message.message}
+                                                  notifyDeleteMessage={notifyDeleteMessage} />)}
             </ul>
             <Modal
                 isOpen={isOpen}
@@ -28,7 +40,10 @@ export default function MessageList({messages}) {
                 style={{content: {width: 350}}}>
                 <h1>비밀번호입력</h1>
                 <div>
-                    <form className={styles.DeleteForm}>
+                    <form 
+                        ref={refForm}
+                        className={styles.DeleteForm}
+                        onSubmit={handleSubmit}>
                         <label>작성시 입력했던 비밀번호를 입력 하세요.</label>
                         <input
                             type={'password'}
@@ -38,8 +53,12 @@ export default function MessageList({messages}) {
                     </form>
                 </div>
                 <div className={modalStyles['modal-dialog-buttons']}>
-                    <button>확인</button>
-                    <button onClick={() => setIsOpen(false)}>취소</button>
+                    <button onClick={ () => {
+                        refForm.current.dispatchEvent(new Event("submit", {cancelable: true, bubbles: true}));
+                    } }>
+                        확인
+                    </button>
+                    <button onClick={ () => setIsOpen(false) }>취소</button>
                 </div>
             </Modal>
         </Fragment>
