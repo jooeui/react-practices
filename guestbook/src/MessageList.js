@@ -43,7 +43,7 @@ export default function MessageList({messages}) {
 
             // 비밀번호가 틀린 경우
             // jsonResult.data = null;
-            setModalData({}, Object.assign(modalData, {title: '...', password: ''}));
+            setModalData({}, Object.assign(modalData), {title: '...', password: ''});
 
             // 잘 삭제가 된 경우
             // jsonResult.data = 10;
@@ -80,7 +80,7 @@ export default function MessageList({messages}) {
                 isOpen={modalData.isOpen}
                 // onRequestClose={() => setIsOpen(false)}  // isOpen을 modalData에 넣어줬기 때문에 xx
                 // onRequestClose={() => setModalData({isOpen: false})}    // 이렇게 하면 기존 데이터를 날려버림(새로운 데이터로 치환)
-                onRequestClose={() => setModalData({isOpen: false})}
+                onRequestClose={ () => setModalData({isOpen: false}) }
                 shouldCloseOnOverlayClick={true}
                 className={modalStyles.Modal}
                 overlayClassName={modalStyles.Overlay}
