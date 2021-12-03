@@ -7,9 +7,9 @@
 ---
     CSS in JS(Styled Components), Less & Styleable
 ---
-06. Font Awesome
-07. React Modal
-08. Material UI
+06. Font Awesome: Working with UI I
+07. React Modal: Working with UI II
+08. Material UI: Working with UI III(x)
 
 예제 실행
 npm run debug src={01|02|03|04|...} css-moduels={false|[true]}
