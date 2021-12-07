@@ -71,15 +71,25 @@
       ---------->
        fetch()
    </pre>
+   조건:
+   1) GET, HEAD, POST 중 하나의 method를 쓰는 경우
+   2) Accept, Accept-Language, Content-Type 등의 헤더만 사용하는 경우
+   3) Content-Type 헤더에 application/x-www-form-urlencoded, multipart/for-data, text/palin 인 경우
 
    2. preflight request
    <pre>
    JS             browser              server
       ---------->        ------------>
        fetch()            OPTIONS /api
+                          Access-Control-Request-Headers: GET
+
                          <------------
                            200 OK
+                           # credentials: 'same-orgin'일 경우
                            Access-Control-Allow-origin:*
+                           # credentials: 'include'일 경우
+                           Access-Control-Allow-origin:'http://localhost:9999'
+                           
                          ------------>
                           GET /api
                          <------------
@@ -87,5 +97,5 @@
                            Access-Control-Allow-origin:*
                           ===============================
                            "{.......}"
-
+   respons <----------
    </pre>

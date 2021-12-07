@@ -19,11 +19,11 @@ export default function() {
             const response = await fetch('http://localhost:8888/api', {
                 method: 'get',
                 mode: 'cors',                    // no-cors, cors, same-origin*
-                credentials: 'same-origin',             // include, omit, same-orgin*   - cookie 기반의 token 전달
+                credentials: 'include',             // include, omit, same-orgin*   - cookie 기반의 token 전달
                 cache: 'no-cache',                      // no-cache, reload, force-cache, default*
                 headers: {
                     'Content-Type': 'application/json', // cf. application/x-www-form-urlencoded
-                    'Accept': 'application'             // cf. text/html
+                    'Accept': 'application/json'             // cf. text/html
                 },
                 redirect: 'follow',                     // follow*, error, manual(response.url)
                 referre: 'client',                      // no-referrer, *client
