@@ -16,14 +16,17 @@ export default function() {
 
     useEffect(async () => {
         try {
-            const response = await fetch('/api', {
+            const response = await fetch('http://localhost:8888/api', {
                 method: 'get',
-                // mode: 'same-origin',
-                // credentials  // cookie 기반의 token 전달
+                mode: 'cors',                    // no-cors, cors, same-origin*
+                credentials: 'same-origin',             // include, omit, same-orgin*   - cookie 기반의 token 전달
+                cache: 'no-cache',                      // no-cache, reload, force-cache, default*
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application'
+                    'Content-Type': 'application/json', // cf. application/x-www-form-urlencoded
+                    'Accept': 'application'             // cf. text/html
                 },
+                redirect: 'follow',                     // follow*, error, manual(response.url)
+                referre: 'client',                      // no-referrer, *client
                 body: null
             });
 
