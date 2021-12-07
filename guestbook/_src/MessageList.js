@@ -48,7 +48,7 @@ export default function MessageList({messages, notifyMessage}) {
 
             // 비밀번호가 틀린 경우
             // jsonResult.data = null;
-            // setModalData({}, Object.assign(modalData), {label: '비밀번호가 일치하지 않습니다.', password: ''});
+            // setModalData(Object.assign({}, modalData, {label: '비밀번호가 일치하지 않습니다.', password: ''}));
 
             // 삭제가 잘 된 경우
             // jsonResult.data = 10;
