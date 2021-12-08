@@ -2,14 +2,14 @@ import React, {Fragment} from 'react';
 import Header from "../layout/Header";
 import Navigation from "../layout/Navigation";
 import Footer from "../layout/Footer";
-import styles from '../assets/scss/component/About.scss';
+import styles from '../assets/scss/layout/Content.scss';
 
-export default function About() {
+export default function SiteLayout({children}) {
     return (
         <Fragment>
             <Header/>
-            <div className={styles.About}>
-                <h2>steamcare 입니다.</h2>
+            <div className={styles.Content}>
+                {children}
             </div>
             <Navigation/>
             <Footer/>
