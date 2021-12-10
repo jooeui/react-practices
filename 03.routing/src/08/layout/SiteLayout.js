@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import styles from '../assets/scss/layout/Content.scss';
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
-import Navigation from "../layout/Navigation";
+import Footer from "./Footer";
+import Header from "./Header";
+import Navigation from "./Navigation";
 
 export default function SiteLayout({children}) {
     return (
